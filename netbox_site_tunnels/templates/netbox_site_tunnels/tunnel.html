@@ -1,0 +1,130 @@
+{% extends 'generic/object.html' %}
+
+{% block content %}
+  <div class="row mb-3">
+    <div class="col col-md-6">
+      <div class="card">
+        <h5 class="card-header">Tunnel Info
+        </h5>
+        <div class="card-body">
+          <table class="table table-hover attr-table">
+            <tr>
+              <th scope="row">Name</th>
+              <td>{{ object.name }}</td>
+            </tr>
+            
+            <tr>
+                <th scope="row">Status</th>
+                <td>{{ object.get_status_display }}</td>
+            </tr>
+          
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-6">
+      <div class="card">
+        <h5 class="card-header">Contacts</h5>
+        <div class="card-body">
+          <table class="table table-hover attr-table">
+
+            <tr>
+              <th scope="row">Main Contact</th>
+              <td>
+                {% if object.contact %}
+                  <a href="{{ object.contact.get_absolute_url }}">{{ object.contact }}</a>
+                {% else %}
+                  {{ ''|placeholder }}
+                {% endif %}
+              </td>
+          </tr>
+          <tr>
+            <th scope="row">Contact Group</th>
+            <td>
+              {% if object.contactgroup %}
+                <a href="{{ object.contactgroup.get_absolute_url }}">{{ object.contactgroup }}</a>
+              {% else %}
+                {{ ''|placeholder }}
+              {% endif %}
+            </td>
+        </tr>
+          </table>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col col-md-6">
+      <div class="card">
+        <h5 class="card-header">Source Info</h5>
+        <div class="card-body">
+          <table class="table table-hover attr-table">
+            <tr>
+              <th scope="row">Site</th>
+              <td>                {% if object.sourcesite %}
+                <a href="{{ object.sourcesite.get_absolute_url }}">{{ object.sourcesite }}</a>
+              {% else %}
+                {{ ''|placeholder }}
+              {% endif %}</td>
+            </tr>
+            <tr>
+              <th scope="row">Device</th>
+              <td>                {% if object.sourcedevice %}
+                <a href="{{ object.sourcedevice.get_absolute_url }}">{{ object.sourcedevice }}</a>
+              {% else %}
+                {{ ''|placeholder }}
+              {% endif %}</td>
+            </tr>
+    
+            <tr>
+              <th scope="row">Source IP</th>
+              <td>                {% if object.sourceip %}
+                <a href="{{ object.sourceip.get_absolute_url }}">{{ object.sourceip }}</a>
+              {% else %}
+                {{ ''|placeholder }}
+              {% endif %}</td>
+            </tr>
+    
+          </table>
+        </div>
+      
+      </div>
+    </div>
+    <div class="col col-md-6">
+      <div class="card">
+        <h5 class="card-header">Peer Info</h5>
+        <div class="card-body">
+          <table class="table table-hover attr-table">
+            <tr>
+              <th scope="row">Site</th>
+              <td>                {% if object.peersite %}
+                <a href="{{ object.sourcesite.get_absolute_url }}">{{ object.peersite }}</a>
+              {% else %}
+                {{ ''|placeholder }}
+              {% endif %}</td>
+            </tr>
+    
+            <tr>
+              <th scope="row">Peer IP</th>
+              <td>                {% if object.sourceip %}
+                <a href="{{ object.peerip.get_absolute_url }}">{{ object.peerip }}</a>
+              {% else %}
+                {{ ''|placeholder }}
+              {% endif %}</td>
+            </tr>
+    
+          </table>
+        </div>
+      
+      </div>
+    </div>
+      <div class="col col-md-6">
+
+      {% include 'inc/panels/custom_fields.html' %}
+    </div>
+    <div class="col col-md-6">
+      {% include 'inc/panels/comments.html' %}
+    </div>
+  </div>
+{% endblock content %}

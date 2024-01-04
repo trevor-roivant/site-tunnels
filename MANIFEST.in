@@ -1,0 +1,2 @@
+recursive-include netbox_site_tunnels/templates/netbox_site_tunnels *.html
+recursive-include netbox_site_tunnels/templates/inc *.html 
